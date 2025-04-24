@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Nav from './Components/Nav.jsx'
+import LandingHero from './Components/LandingHero.jsx'
+import VenueSection from './Components/VenueSection.jsx'
+import ReachGTBIT from './Components/ReachGTBIT.jsx'
+import Footer from './Components/Footer.jsx'
+import ScrollVelocity from './Components/ScrollVelocity.jsx'
+import FAQSection from './Components/FAQSection.jsx'
+import OrganisersList from './Components/OrganisersList.jsx'
+import SponsorsSection from './Components/SponsorsSection.jsx'
+import PrizeSection from './Components/PrizeSection.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='w-screen h-auto'>
+      <Nav />
+      <LandingHero />
+      <ScrollVelocity
+        texts={['Hacknova 2k25', 'GTBIT']}
+        // velocity={velocity} 
+        className="custom-scroll-text"
+      />
+      <PrizeSection />
+      <SponsorsSection />
+      <OrganisersList />
+      <FAQSection />
+      <VenueSection />
+      <ReachGTBIT />
+      
+      <Footer />
+    </div>
   )
 }
 

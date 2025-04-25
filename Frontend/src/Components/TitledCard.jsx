@@ -102,20 +102,20 @@ export default function TiltedCard({
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="bg-red-400 absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
+          className="border-1 border-red-400 p-2 absolute top-0 left-0 object-contain rounded-[15px] will-change-transform [transform:translateZ(0)]"
           style={{
             width: imageWidth,
             height: imageHeight,
           }}
         />
 
-        {displayOverlayContent && overlayContent && (
+        {/* {displayOverlayContent && overlayContent && (
           <motion.div
             className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]"
           >
             {overlayContent}
           </motion.div>
-        )}
+        )} */}
       </motion.div>
 
       {showTooltip && (

@@ -1,10 +1,11 @@
 import React from "react";
 import TiltedCard from "./TitledCard";
 
+
 const sponsors = {
   "Platform Partner": [
     {
-      image: "",
+      image: "xyz_logo.svg.png",
       alt: "xyz"
     }
   ],
@@ -38,12 +39,12 @@ const sponsors = {
       alt: "RideIn"
     }
   ],
-  "Web3 Partner": [
-    {
-      image: "https://example.com/web3-logo.png",
-      alt: "Web3 Logo"
-    }
-  ]
+  // "Web3 Partner": [
+  //   {
+  //     image: "https://example.com/web3-logo.png",
+  //     alt: "Web3 Logo"
+  //   }
+  // ]
 };
 
 const SponsorsSection = () => {

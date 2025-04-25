@@ -33,7 +33,7 @@ const ReachGTBIT = () => {
             <Bus className="mx-auto mb-4 h-10 w-10 text-green-400" />
             <h3 className="text-xl font-semibold text-white mb-2">By Bus</h3>
             <p className="text-gray-300">
-              Take a DTC bus to Uttam Nagar or Janakpuri area. From there, local transport is available to reach GTBIT.
+              Take a DTC bus to swarg ashram near mayapuri and subhash nagar metro station. From there, local transport is available to reach GTBIT.
             </p>
           </CardContent>
         </Card>

@@ -91,7 +91,7 @@ const OrganisersList = () => {
 
   return (
     <section className="bg-black py-14 px-4 text-white">
-      <h2 className="text-4xl font-extrabold text-center text-red-500 mb-12 tracking-widest">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-red-500 mb-12 font-bebas">
         MEET THE ORGANIZERS
       </h2>
       <div className="flex flex-wrap gap-6 justify-center max-w-6xl mx-auto">

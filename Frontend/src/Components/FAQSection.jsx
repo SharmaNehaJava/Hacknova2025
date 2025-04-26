@@ -1,82 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
+  // ... [Keep all your FAQ data exactly as you wrote it]
   {
     question: "What is Hacknova 2025?",
-    answer:
-      "Hacknova 2025 is a 36-hour offline hackathon organized at GTBIT (Guru Tegh Bahadur Institute of Technology), GGSIPU, New Delhi, designed to foster innovation, creativity, and problem-solving among student developers."
+    answer: "Hacknova 2025 is a 36-hour offline hackathon organized at GTBIT (Guru Tegh Bahadur Institute of Technology), GGSIPU, New Delhi, designed to foster innovation, creativity, and problem-solving among student developers."
   },
   {
     question: "When and where will the hackathon take place?",
-    answer:
-      "Hacknova 2025 will be held on 2nd–3rd August 2025 at GTBIT College, GGSIPU, New Delhi."
+    answer: "Hacknova 2025 will be held on 2nd–3rd August 2025 at GTBIT College, GGSIPU, New Delhi."
   },
   {
     question: "Who can participate in Hacknova 2025?",
-    answer:
-      "The hackathon is open to students, innovators, and aspiring technologists from colleges and universities across India."
+    answer: "The hackathon is open to students, innovators, and aspiring technologists from colleges and universities across India."
   },
   {
     question: "What is the duration of the event?",
-    answer:
-      "The hackathon will run for 36 hours continuously from 2nd August morning to 3rd August evening."
+    answer: "The hackathon will run for 36 hours continuously from 2nd August morning to 3rd August evening."
   },
   {
     question: "What are the themes for the hackathon?",
-    answer:
-      "Themes will revolve around real-world challenges including Sustainability, Fintech, AI & ML, Cybersecurity, Education, and more."
+    answer: "Themes will revolve around real-world challenges including Sustainability, Fintech, AI & ML, Cybersecurity, Education, and more."
   },
   {
     question: "What should I bring to the hackathon?",
-    answer:
-      "Participants should bring their laptops, chargers, extension cords, valid student ID, and essentials for a 36-hour stay."
+    answer: "Participants should bring their laptops, chargers, extension cords, valid student ID, and essentials for a 36-hour stay."
   },
   {
     question: "Can I participate solo or do I need a team?",
-    answer:
-      "You can participate either solo or in a team. Teams of 2–4 members are preferred. Solo participants can be merged into teams."
+    answer: "You can participate either solo or in a team. Teams of 2–4 members are preferred. Solo participants can be merged into teams."
   },
   {
     question: "Are inter-college teams allowed to participate?",
-    answer:
-      "Yes, inter-college teams are welcome. Diversity in team composition is encouraged."
+    answer: "Yes, inter-college teams are welcome. Diversity in team composition is encouraged."
   },
   {
     question: "Will there be food and drinks during the event?",
-    answer:
-      "Yes! Meals, snacks, and refreshments will be provided throughout the event, including high tea, midnight snacks, and breakfast."
+    answer: "Yes! Meals, snacks, and refreshments will be provided throughout the event, including high tea, midnight snacks, and breakfast."
   },
   {
     question: "Will there be charging ports available?",
-    answer:
-      "Yes, the venue will have adequate charging points and power outlets across all hacking areas."
+    answer: "Yes, the venue will have adequate charging points and power outlets across all hacking areas."
   },
   {
     question: "What activities will be available during breaks?",
-    answer:
-      "Breaks will feature fun activities, mini-games, and informal networking to recharge and connect with fellow hackers."
+    answer: "Breaks will feature fun activities, mini-games, and informal networking to recharge and connect with fellow hackers."
   },
   {
     question: "How can I register for the event?",
-    answer:
-      "Registration details and form will be available on the official Hacknova 2025 website. Stay tuned to our social handles for updates."
+    answer: "Registration details and form will be available on the official Hacknova 2025 website. Stay tuned to our social handles for updates."
   },
   {
     question: "Can my travel expenses be reimbursed?",
-    answer:
-      "Currently, travel reimbursement is not guaranteed. Please stay updated via the official communication for any sponsorship benefits."
+    answer: "Currently, travel reimbursement is not guaranteed. Please stay updated via the official communication for any sponsorship benefits."
   },
   {
     question: "What if I have issues or questions during the event?",
-    answer:
-      "A dedicated helpdesk and volunteers will be available on-site for your assistance at any time during the hackathon."
+    answer: "A dedicated helpdesk and volunteers will be available on-site for your assistance at any time during the hackathon."
   },
   {
     question: "What makes Hacknova 2025 unique?",
-    answer:
-      "Hacknova 2025 stands out for its 36-hour offline format, real-world problem statements, strong mentor network, and immersive experience at a premier tech institute in Delhi."
+    answer: "Hacknova 2025 stands out for its 36-hour offline format, real-world problem statements, strong mentor network, and immersive experience at a premier tech institute in Delhi."
   }
 ];
 
@@ -126,9 +116,30 @@ const FAQSection = () => {
   const [showAll, setShowAll] = useState(false);
   const visibleFaqs = showAll ? faqs : faqs.slice(0, 4);
 
+  const faqRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(faqRef.current, {
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        delay: 0.3,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: faqRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="bg-black py-16 px-4 text-white">
-      <h2 className="text-4xl font-bold text-center text-red-600 mb-10 tracking-widest">
+    <section ref={faqRef} className="bg-black py-16 px-4 text-white">
+      <h2 className="text-4xl font-bebas font-bold text-center text-red-600 mb-10 tracking-widest">
         FAQs
       </h2>
       <div className="max-w-3xl mx-auto">

@@ -21,43 +21,64 @@ const demoItems = [
   { link: '#', text: 'Open Innovation', image: './Tracks/open.avif' }
 ];
 
-
-
 function App() {
-
   return (
-    <div className='w-screen h-auto'>
+    <div className='w-screen h-auto scroll-smooth'> {/* <-- important */}
       <Nav />
-      <LandingHero />
-      <ScrollVelocity
-        texts={['Hacknova 2k25', 'GTBIT']}
-        // velocity={velocity} 
-        className="custom-scroll-text"
-      />
-      <div className='relative h-screen'>
-        {/* <h1 className='text-center font-bold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-400 to-purple-600 text-gradient'>TRACKS</h1> */}
+
+      {/* Sections with IDs */}
+      <section id="home">
+        <LandingHero />
+      </section>
+
+      <section id="tracks" className='relative h-screen'>
+        <h1 className='text-center font-bold text-3xl md:text-4xl  text-red-500 font-bebas'>TRACKS</h1>
         <FlowingMenu items={demoItems} />
-      </div>
-      <HackathonSchedule />
+      </section>
 
-      <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-        <Orb
-          hoverIntensity={0.5}
-          rotateOnHover={true}
-          hue={0}
-          forceHoverState={false}
-        />
-      </div>
-      <PrizeSection />
-      <SponsorsSection />
-      <OrganisersList />
-      <FAQSection />
-      <VenueSection />
-      <ReachGTBIT />
+      <section id="schedule">
+        <HackathonSchedule />
+      </section>
 
+      <section id="circle">
+        <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+          <Orb
+            hoverIntensity={0.5}
+            rotateOnHover={true}
+            hue={0}
+            forceHoverState={false}
+          />
+        </div>
+      </section>
+
+      <section id="prizes">
+        <PrizeSection />
+      </section>
+
+      <section id="sponsors">
+        <SponsorsSection />
+      </section>
+
+      <section id="team">
+        <OrganisersList />
+      </section>
+
+      <section id="faq">
+        <FAQSection />
+      </section>
+
+      <section id="venue">
+        <VenueSection />
+      </section>
+
+      <section id="reach">
+        <ReachGTBIT />
+      </section>
+
+      <ScrollVelocity texts={['Hacknova 2k25', 'GTBIT']} className="custom-scroll-text" />
       <Footer />
     </div>
   )
 }
 
-export default App
+export default App;

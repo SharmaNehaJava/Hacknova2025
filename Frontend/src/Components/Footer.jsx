@@ -1,12 +1,36 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { FaTwitter, FaInstagram, FaLinkedin, FaGithub, FaDiscord, FaPaperPlane } from 'react-icons/fa'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Footer = () => {
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(footerRef.current, {
+        opacity: 0,
+        y: 100,
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+        ease: "power3.out",
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <footer className="bg-black text-gray-300 px-6 py-12 md:px-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer ref={footerRef} className="bg-black text-gray-300 px-6 py-12 md:px-20 mt-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
         {/* Logo + Desc */}
-        <div>
+        <div className="flex flex-col items-start">
           <div className="flex items-center gap-2 mb-4">
             <div className="h-10 w-10 bg-gradient-to-br from-red-500 to-red-900 rounded-full flex items-center justify-center text-xl font-bold">H</div>
             <h1 className="text-2xl font-bold tracking-wider text-white">
@@ -59,7 +83,7 @@ const Footer = () => {
               placeholder="Your email address"
               className="flex-grow px-4 py-2 bg-transparent text-white outline-none"
             />
-            <button type="submit" className="bg-red-500 hover:bg-red-600 px-4 flex items-center justify-center">
+            <button type="submit" className="bg-red-500 hover:bg-red-600 p-2 w-10 flex items-center justify-center">
               <FaPaperPlane />
             </button>
           </form>
